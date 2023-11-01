@@ -1,21 +1,38 @@
 const { MoviesService } = require('../../../services');
 
-const getMovie = async (req, res, next) => {
+const getMoviesList = async (req, res, next) => {
   const { URLMovieDB } = req.query;
 
-  if (URLMovieDB === '' || URLMovieDB === null || !URLMovieDB) {
+  if (!URLMovieDB || URLMovieDB === '' || URLMovieDB === null) {
     res.sendStatus(409);
     next();
     return;
   }
 
   const movieService = new MoviesService();
-  movieService.getMovie({ route: URLMovieDB })
+  movieService.getMoviesList({ route: URLMovieDB })
     .then(response => res.status(200).send(response.data))
     .catch(error => res.status(500).send(error))
-    .catch(() => next());
+    .finally(() => next());
+};
+
+const getMovie = async (req, res, next) => {
+  const { id } = req.params;
+
+  if (!id || id === '' || id === null) {
+    res.sendStatus(409);
+    next();
+    return;
+  }
+
+  const movieService = new MoviesService();
+  movieService.getMovie(id)
+    .then(response => res.status(200).send(response.data))
+    .catch(error => res.status(500).send(error))
+    .finally(() => next());
 };
 
 module.exports = {
+  getMoviesList,
   getMovie,
 };
