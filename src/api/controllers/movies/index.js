@@ -1,7 +1,7 @@
 const { MoviesService } = require("../../../services");
 
 const getMoviesList = async (req, res, next) => {
-  const { URLMovieDB } = req.query;
+  const { URLMovieDB, page } = req.query;
 
   if (!URLMovieDB || URLMovieDB === "" || URLMovieDB === null) {
     res.sendStatus(409);
@@ -11,7 +11,7 @@ const getMoviesList = async (req, res, next) => {
 
   const movieService = new MoviesService();
   movieService
-    .getMoviesList({ route: URLMovieDB })
+    .getMoviesList(URLMovieDB, { page })
     .then((response) => res.status(200).send(response.data))
     .catch((error) => res.status(500).send(error))
     .finally(() => next());

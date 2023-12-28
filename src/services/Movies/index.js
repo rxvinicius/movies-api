@@ -15,9 +15,11 @@ const default_params = {
 class MoviesService {
   constructor() {}
 
-  getMoviesList = async (params) => {
-    const { route } = params;
-    return api.get(route, default_params);
+  getMoviesList = async (route, filters) => {
+    const { page } = filters;
+    const data = default_params;
+    data.params.page = page;
+    return api.get(route, data);
   };
 
   getMovie = async (id) => {
