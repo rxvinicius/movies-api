@@ -1,4 +1,4 @@
-const MoviesService = require('./Movies');
+const MoviesService = require("./Movies");
 
 module.exports = {
   MoviesService,
