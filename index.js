@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const { moviesRouter } = require("./api/routes");
+const { moviesRouter } = require("./src/api/routes");
 const port = process.env.PORT || 3000;
 
 const startServer = async () => {

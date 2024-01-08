@@ -2,15 +2,15 @@
   "name": "movies-api",
   "version": "1.0.0",
   "description": "rest api to react native movies app",
-  "main": "app.js",
+  "main": "index.js",
   "author": "rxvinicius",
   "license": "MIT",
   "engines": {
-    "node": "18.x"
+    "node": "16.x"
   },
   "scripts": {
-    "start:local": "nodemon --watch src src/app.js",
-    "start": "node src/app.js"
+    "start:local": "nodemon --watch index.js",
+    "start": "node index.js"
   },
   "dependencies": {
     "axios": "^1.5.1",
