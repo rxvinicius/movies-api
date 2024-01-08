@@ -6,7 +6,7 @@
   "author": "rxvinicius",
   "license": "MIT",
   "engines": {
-    "node": "16.x"
+    "node": ">=^16.0.0 <21"
   },
   "scripts": {
     "start:local": "nodemon --watch src src/app.js",
